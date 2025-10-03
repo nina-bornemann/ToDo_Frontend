@@ -1,53 +1,47 @@
+import { Route, Routes } from "react-router-dom";
 import './App.css'
+import Card from "./Card.tsx";
+import NavBar from "./NavBar.tsx";
 
 function App() {
 
   return (
     <>
         <div className={"flex flex-col gap-16"}>
-            <h1>Super Kanban</h1>
-            <div className={"flex flex-row justify-between"}>
-                <button><h2>Home</h2></button>
-                <button><h2>ToDo</h2></button>
-                <button><h2>Doing</h2></button>
-                <button><h2>Done</h2></button>
-            </div>
 
-            <div className={"flex flex-row m-16 gap-16"}>
-                <div>
-                    <h3>ToDo</h3>
+            <NavBar/>
+
+            <Routes>
+            <Route path={"/home"} element={
+                <div className={"flex flex-row m-16 gap-16"}>
                     <div>
-                        <div className={"flex flex-col gap-4 rounded-2xl bg-zinc-700 w-72"}>
-                            <p>Description</p>
-                            <p>Status</p>
-                            <button className={"mx-16"}>Details</button>
-                            <button className={"mx-16"}>Advance</button>
+                        <h3>ToDo</h3>
+                        <div>
+                            <Card description={"test"} status={"open"}/>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Doing</h3>
+                        <div>
+                            <Card description={"test-3"} status={"doing"}/>
+
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Done</h3>
+                        <div>
+                            <Card description={"test-3"} status={"done"}/>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <h3>Doing</h3>
-                    <div>
-                        <div className={"flex flex-col gap-4 rounded-2xl bg-zinc-700 w-72"}>
-                            <p>Description</p>
-                            <p>Status</p>
-                            <button className={"mx-16"}>Details</button>
-                            <button className={"mx-16"}>Advance</button>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h3>Done</h3>
-                    <div>
-                        <div className={"flex flex-col gap-4 rounded-2xl bg-zinc-700 w-72"}>
-                            <p>Description</p>
-                            <p>Status</p>
-                            <button className={"mx-16"}>Details</button>
-                            <button className={"mx-16"}>Advance</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            } />
+
+                <Route path={"/todo"} />
+                <Route path={"/doing"}/>
+                <Route path={"/done"}/>
+
+            </Routes>
+
             <div>
                 <input type={"text"} placeholder={"Enter your ToDo"}/>
                 <button>Add</button>
