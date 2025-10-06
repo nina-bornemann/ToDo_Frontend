@@ -2,10 +2,15 @@ import { Route, Routes } from "react-router-dom";
 import './App.css'
 import Card from "./Card.tsx";
 import NavBar from "./NavBar.tsx";
+import {allTodos} from "./ToDoModel.ts";
 
 function App() {
 
-  return (
+    let todoCards = allTodos
+        .map(todo => <Card description={todo.description} status={todo.status}/>)
+
+
+    return (
     <>
         <div className={"flex flex-col gap-16"}>
 
@@ -17,7 +22,7 @@ function App() {
                     <div>
                         <h3>ToDo</h3>
                         <div>
-                            <Card description={"test"} status={"open"}/>
+                            {todoCards}
                         </div>
                     </div>
                     <div>
