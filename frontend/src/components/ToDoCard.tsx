@@ -7,9 +7,11 @@ type ToDoCardProps = {
 export default function ToDoCard({ todo }: Readonly<ToDoCardProps>) {
     return (
         <>
-            <p>{todo.description}</p>
-            <button>Edit</button>
-            <button>Advance</button>
+            <div className={"card"}>
+                <p>{todo.description}</p>
+                <button>Edit</button>
+                <button>Advance</button>
+            </div>
         </>
     );
 }

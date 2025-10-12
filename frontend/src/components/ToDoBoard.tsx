@@ -11,16 +11,18 @@ export default function ToDoBoard() {
     useEffect(() => {
         axios
             .get("/api/todo")
-            .then((r) => setToDos(r.data))
+            .then((r) => {
+                setToDos(r.data)
+            })
             .catch((e) => {
                 console.log(e)
                 setError("Could not load todos")
             })
     }, []);
 
-    let todo = todos.filter((t) => t.status === "todo");
-    let doing = todos.filter((t) => t.status === "doing");
-    let done = todos.filter((t) => t.status === "done");
+    let todo = todos.filter((t) => t.status === "OPEN");
+    let doing = todos.filter((t) => t.status === "IN_PROGRESS");
+    let done = todos.filter((t) => t.status === "DONE");
 
     return (
         <div>
@@ -36,7 +38,7 @@ export default function ToDoBoard() {
                 <button> Add </button>
             </div>
 
-            <div>
+            <div className={"allCards"}>
                 <div>
                     <h2>To Do</h2>
                     {todo.length > 0 ? todo.map((t) => <ToDoCard key={t.id} todo={t} />) : <p>No todos</p>}
