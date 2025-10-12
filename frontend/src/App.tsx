@@ -1,6 +1,7 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import ToDoBoard from "./components/ToDoBoard";
 import './App.css'
+import Welcome from "./components/Welcome.tsx";
 
 function App() {
 
@@ -12,8 +13,8 @@ function App() {
         </nav>
 
         <Routes>
-            <Route path="/" element={<h1>Welcome to your Kanban Board</h1>} />
-            <Route path="/board" element={<ToDoBoard />} />
+            <Route path="/" element={ <Welcome /> } />
+            <Route path="/board" element={ <ToDoBoard />} />
         </Routes>
     </>
   )
