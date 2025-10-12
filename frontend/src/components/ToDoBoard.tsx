@@ -24,39 +24,22 @@ export default function ToDoBoard() {
             });
     }, []);
 
-    function addToDo() {
-        if (!newDescription.trim()) return;
-        api
-            .post("/todo", { description: newDescription, status: "todo" })
-            .then((response) => {
-                setToDos((prev) => [...prev, response.data]);
-                setNewDescription("");
-            })
-            .catch((err) => console.error("Error adding todo:", err));
-    }
-
     const todo = todos.filter((t) => t.status === "todo");
     const doing = todos.filter((t) => t.status === "doing");
     const done = todos.filter((t) => t.status === "done");
 
     return (
-        <div className="p-4">
-            {error && <p className="text-red-500 mb-2">{error}</p>}
+        <div>
+            {error && <p>{error}</p>}
 
-            <div className="flex gap-2 mb-4">
+            <div>
                 <input
                     type="text"
                     placeholder="Enter new ToDo"
                     value={newDescription}
                     onChange={(e) => setNewDescription(e.target.value)}
-                    className="border p-1 rounded flex-1 min-w-[200px]"
                 />
-                <button
-                    onClick={addToDo}
-                    className="bg-blue-500 text-white px-3 rounded hover:bg-blue-600"
-                >
-                    Add
-                </button>
+                <button> Add </button>
             </div>
             {loading && <p>Loading todos...</p>}
 
