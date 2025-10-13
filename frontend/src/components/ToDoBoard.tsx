@@ -43,7 +43,7 @@ export default function ToDoBoard() {
     }
 
     return (
-        <div>
+        <div className={"board"}>
             {error && <p>{error}</p>}
 
             <div>
@@ -56,15 +56,15 @@ export default function ToDoBoard() {
             </div>
 
             <div className={"allCards"}>
-                <div>
+                <div className={"columns"}>
                     <h2>To Do</h2>
                     {todo.length > 0 ? todo.map((t) => <ToDoCard key={t.id} todo={t} />) : <p>No todos</p>}
                 </div>
-                <div>
+                <div className={"columns"}>
                     <h2>Doing</h2>
                     {doing.length > 0 ? doing.map((t) => <ToDoCard key={t.id} todo={t} />) : <p>Nothing in progress</p>}
                 </div>
-                <div>
+                <div className={"columns"}>
                     <h2>Done</h2>
                     {done.length > 0 ? done.map((t) => <ToDoCard key={t.id} todo={t} />) : <p>Nothing done yet</p>}
                 </div>
