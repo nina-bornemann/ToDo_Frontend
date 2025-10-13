@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
-import type { ToDo } from "../model/ToDo";
+import {useEffect, useState} from "react";
+import type {ToDo} from "../model/ToDo";
 import ToDoCard from "./ToDoCard";
 import axios from "axios";
+import type {ToDoDto} from "../model/ToDoDto.tsx";
 
 export default function ToDoBoard() {
     const [todos, setToDos] = useState<ToDo[]>([]);
     const [error, setError] = useState<string | null>(null);
+
     const [newDescription, setNewDescription] = useState("");
 
     useEffect(() => {
@@ -24,6 +26,22 @@ export default function ToDoBoard() {
     let doing = todos.filter((t) => t.status === "IN_PROGRESS");
     let done = todos.filter((t) => t.status === "DONE");
 
+    function handleCreate() {
+
+        const newToDo:ToDoDto = {description: newDescription, status: "OPEN"}
+
+        axios
+            .post("/api/todo", newToDo)
+            .then((r) => {
+                console.log(r.data)
+                setToDos((prev) => {
+                    return [...prev, r.data];
+                })
+                setNewDescription("")
+            })
+            .catch((e) => setError(e))
+    }
+
     return (
         <div>
             {error && <p>{error}</p>}
@@ -32,10 +50,9 @@ export default function ToDoBoard() {
                 <input
                     type="text"
                     placeholder="Enter new ToDo"
-                    value={newDescription}
                     onChange={(e) => setNewDescription(e.target.value)}
                 />
-                <button> Add </button>
+                <button onClick={handleCreate}> Add </button>
             </div>
 
             <div className={"allCards"}>
