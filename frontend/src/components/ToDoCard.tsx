@@ -31,7 +31,6 @@ export default function ToDoCard(props: Readonly<ToDoCardProps>) {
             .then((r) => {
                 setUpdatedStatus(r.data.status)
                 setUpdatedToDo({id: props.todo.id, description: updatedDescription, status:props.todo.status})
-                console.log(updatedToDo)
             })
             .catch((e) => console.log(e))
     }
@@ -47,6 +46,17 @@ export default function ToDoCard(props: Readonly<ToDoCardProps>) {
                                      value={updatedDescription}
                                      placeholder={"Enter adjusted description"}
                                      onChange={(e) => setUpdatedDescription(e.target.value)}/>}
+                {isStatusEditing &&
+                    <label>
+                        <select id={"statusOptions"}
+                                name={"statusOptions"}
+                                value={updatedStatus}
+                                onChange={(o) => setUpdatedStatus(o.target.value as "OPEN" | "IN_PROGRESS" | "DONE")}>
+                            <option value={"DONE"}>ToDo</option>
+                            <option value={"IN_PROGRESS"}>Doing</option>
+                            <option value={"DONE"}>Done</option>
+                        </select>
+                    </label>}
 
                 <div className={"cardButtons"}>
                     {!isDescriptionEditing && <button onClick={() => setIsDescriptionEditing(!isDescriptionEditing)}>Edit ✏️</button>}
