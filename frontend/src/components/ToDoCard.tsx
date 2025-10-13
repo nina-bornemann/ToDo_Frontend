@@ -4,6 +4,7 @@ import {useState} from "react";
 
 type ToDoCardProps = {
     todo: ToDo;
+    onUpdate: () => void
 };
 
 export default function ToDoCard(props: Readonly<ToDoCardProps>) {
@@ -30,7 +31,9 @@ export default function ToDoCard(props: Readonly<ToDoCardProps>) {
             .put(`/api/todo/${props.todo.id}`, {id:props.todo.id, description: updatedDescription, status: updatedStatus})
             .then((r) => {
                 setUpdatedStatus(r.data.status)
-                setUpdatedToDo({id: props.todo.id, description: updatedDescription, status:props.todo.status})
+                let updated = {id: props.todo.id, description: updatedDescription, status:props.todo.status}
+                setUpdatedToDo(updated)
+                props.onUpdate()
             })
             .catch((e) => console.log(e))
     }
@@ -52,7 +55,7 @@ export default function ToDoCard(props: Readonly<ToDoCardProps>) {
                                 name={"statusOptions"}
                                 value={updatedStatus}
                                 onChange={(o) => setUpdatedStatus(o.target.value as "OPEN" | "IN_PROGRESS" | "DONE")}>
-                            <option value={"DONE"}>ToDo</option>
+                            <option value={"OPEN"}>ToDo</option>
                             <option value={"IN_PROGRESS"}>Doing</option>
                             <option value={"DONE"}>Done</option>
                         </select>
