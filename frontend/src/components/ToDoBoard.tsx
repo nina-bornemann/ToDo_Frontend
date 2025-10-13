@@ -1,46 +1,73 @@
-import { useEffect, useState } from "react";
-import { api } from "../api";
-import type { ToDo } from "../model/ToDo";
+import {useEffect, useState} from "react";
+import type {ToDo} from "../model/ToDo";
 import ToDoCard from "./ToDoCard";
+import axios from "axios";
+import type {ToDoDto} from "../model/ToDoDto.tsx";
 
 export default function ToDoBoard() {
     const [todos, setToDos] = useState<ToDo[]>([]);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
+    const [newDescription, setNewDescription] = useState("");
+
     useEffect(() => {
-        api.get("/todos")
-            .then((response) => {
-                setToDos(response.data);
-                setLoading(false);
+        axios
+            .get("/api/todo")
+            .then((r) => {
+                setToDos(r.data)
             })
-            .catch((error) => {
-                console.error(error);
-                setError("Could not load todos");
-                setLoading(false);
-            });
+            .catch((e) => {
+                console.log(e)
+                setError("Could not load todos")
+            })
     }, []);
 
-    const todo = todos.filter((t) => t.status === "todo");
-    const doing = todos.filter((t) => t.status === "doing");
-    const done = todos.filter((t) => t.status === "done");
+    let todo = todos.filter((t) => t.status === "OPEN");
+    let doing = todos.filter((t) => t.status === "IN_PROGRESS");
+    let done = todos.filter((t) => t.status === "DONE");
 
-    if (loading) return <p>Loading todos...</p>;
-    if (error) return <p>{error}</p>;
+    function handleCreate() {
+
+        const newToDo:ToDoDto = {description: newDescription, status: "OPEN"}
+
+        axios
+            .post("/api/todo", newToDo)
+            .then((r) => {
+                console.log(r.data)
+                setToDos((prev) => {
+                    return [...prev, r.data];
+                })
+                setNewDescription("")
+            })
+            .catch((e) => setError(e))
+    }
 
     return (
-        <div className="flex flex-row justify-around p-4">
+        <div>
+            {error && <p>{error}</p>}
+
             <div>
-                <h2>To Do</h2>
-                {todo.map((t) => <ToDoCard key={t.id} todo={t} />)}
+                <input
+                    type="text"
+                    placeholder="Enter new ToDo"
+                    onChange={(e) => setNewDescription(e.target.value)}
+                />
+                <button onClick={handleCreate}> Add </button>
             </div>
-            <div>
-                <h2>Doing</h2>
-                {doing.map((t) => <ToDoCard key={t.id} todo={t} />)}
-            </div>
-            <div>
-                <h2>Done</h2>
-                {done.map((t) => <ToDoCard key={t.id} todo={t} />)}
+
+            <div className={"allCards"}>
+                <div>
+                    <h2>To Do</h2>
+                    {todo.length > 0 ? todo.map((t) => <ToDoCard key={t.id} todo={t} />) : <p>No todos</p>}
+                </div>
+                <div>
+                    <h2>Doing</h2>
+                    {doing.length > 0 ? doing.map((t) => <ToDoCard key={t.id} todo={t} />) : <p>Nothing in progress</p>}
+                </div>
+                <div>
+                    <h2>Done</h2>
+                    {done.length > 0 ? done.map((t) => <ToDoCard key={t.id} todo={t} />) : <p>Nothing done yet</p>}
+                </div>
             </div>
         </div>
     );
