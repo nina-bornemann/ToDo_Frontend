@@ -1,73 +1,92 @@
-# React + TypeScript + Vite
+# 🧩 ToDo App — Frontend Implementation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![img.png](img.png)
 
-Currently, two official plugins are available:
+This project is a simple but complete **ToDo management app** 
+built with **React + TypeScript** on the frontend and a **Spring 
+Boot REST API** on the backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+In my [previous project](https://github.com/nina-bornemann/ToDo_Backend_Project), the **frontend** was provided and I 
+built the **backend**.  
+This time, the challenge was reversed - the **backend** was 
+given, and I implemented the **frontend** from scratch.
 
-## React Compiler
+The goal: to create a fully functional, clean, and responsive user interface that interacts with the existing REST API.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This is a work in progress (see Future Implementations ⬇️)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Fetch all ToDos from the backend and display them by status:
+    - 🟢 **To Do**
+    - 🟡 **In Progress**
+    - 🔵 **Done**
+- Create new ToDos
+- Edit descriptions inline
+- Change ToDo status via dropdown (and auto-move between columns)
+- Real-time updates without page reloads
+- Error handling for failed requests
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+- React (with hooks)
+- TypeScript
+- Axios (for HTTP requests)
+- CSS / basic styling
+
+**Backend (given):**
+- Java Spring Boot
+- REST API (with endpoints for GET, POST, PUT)
+
+---
+
+## 📸 API Endpoints
+
+| Method | Endpoint | Description |
+|---------|-----------|-------------|
+| `GET` | `/api/todo` | Fetch all ToDos |
+| `POST` | `/api/todo` | Create a new ToDo |
+| `PUT` | `/api/todo/{id}` | Update existing ToDo (description/status) |
+
+**Example ToDo object:**
+```json
+{
+  "id": "a12b3c",
+  "description": "Finish React project",
+  "status": "IN_PROGRESS"
+}     
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🧪 How to Run
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Clone the repo
+> git clone
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Install dependencies
+>npm install
+
+
+Start the frontend
+>npm run dev
+
+
+Start the backend (in a separate terminal)
+>./mvnw spring-boot:run
+
+
+Visit 👉 http://localhost:5173
+
+## 🧹 Future Improvements
+
+- Add delete functionality 🗑️
+- Improve UI/UX (animations, transitions, responsive design)
+- Add toast notifications for success/error
+- Unit tests for components
+- Drag-and-drop ToDo rearranging
