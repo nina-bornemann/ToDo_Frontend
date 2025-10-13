@@ -62,10 +62,10 @@ export default function ToDoCard(props: Readonly<ToDoCardProps>) {
                     </label>}
 
                 <div className={"cardButtons"}>
-                    {!isDescriptionEditing && <button onClick={() => setIsDescriptionEditing(!isDescriptionEditing)}>Edit ✏️</button>}
+                    {!isDescriptionEditing && <button onClick={() => setIsDescriptionEditing(!isDescriptionEditing)}>✏️</button>}
                     {isDescriptionEditing && <button onClick={() => {handleDescriptionChange(); setIsDescriptionEditing(!isDescriptionEditing)}}>Save</button>}
 
-                    {!isStatusEditing && <button onClick={() => setIsStatusEditing(!isStatusEditing)}>Advance ⏭️</button>}
+                    {!isStatusEditing && <button onClick={() => setIsStatusEditing(!isStatusEditing)}>⏮️ Move ⏭️</button>}
                     {isStatusEditing && <button onClick={() => {handleStatusChange(); setIsStatusEditing(!isStatusEditing)}}>Save</button>}
                 </div>
             </div>
