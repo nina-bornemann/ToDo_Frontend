@@ -4,7 +4,7 @@ export default function NavBar() {
 
     return (
         <>
-            <div>
+            <div className={"nav"}>
                 <Link to={"/"}>Home</Link>
                 <Link to={"/board"}>ToDo Board</Link>
             </div>
