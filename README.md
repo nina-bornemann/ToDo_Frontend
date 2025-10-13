@@ -1,11 +1,10 @@
 # 🧩 ToDo App — Frontend Implementation
 
-![img.png](img.png)
+![img.png](./frontend/img.png)
 
 This project is a simple but complete **ToDo management app** 
 built with **React + TypeScript** on the frontend and a **Spring 
 Boot REST API** on the backend.
-
 In my [previous project](https://github.com/nina-bornemann/ToDo_Backend_Project), the **frontend** was provided and I 
 built the **backend**.  
 This time, the challenge was reversed - the **backend** was 
