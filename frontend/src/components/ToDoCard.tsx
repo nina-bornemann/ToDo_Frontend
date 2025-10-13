@@ -29,7 +29,8 @@ export default function ToDoCard(props: Readonly<ToDoCardProps>) {
             <div className={"card"}>
                 {!isEditing && <p>{updatedDescription}</p>}
 
-                {isEditing && <input type={"text"}
+                {isEditing && <input className={"cardInputField"}
+                                     type={"text"}
                                      name={"input"}
                                      value={updatedDescription}
                                      placeholder={"Enter adjusted description"}

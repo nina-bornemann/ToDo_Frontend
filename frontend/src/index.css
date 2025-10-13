@@ -76,6 +76,7 @@ button:focus-visible {
     background-color: dimgrey;
     margin: 20px;
     min-width: 100%;
+    min-height: 15%;
 }
 
 .allCards {
@@ -88,4 +89,9 @@ button:focus-visible {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+.cardInputField {
+    margin: 20px;
+    min-height: 30px;
+    font-size: 15px;
 }
