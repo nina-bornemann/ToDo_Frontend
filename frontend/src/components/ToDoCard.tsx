@@ -34,10 +34,11 @@ export default function ToDoCard(props: Readonly<ToDoCardProps>) {
                                      value={updatedDescription}
                                      placeholder={"Enter adjusted description"}
                                      onChange={(e) => setUpdatedDescription(e.target.value)}/>}
-
+                <div className={"cardButtons"}>
                 {!isEditing && <button onClick={() => setIsEditing(!isEditing)}>Edit ✏️</button>}
                 {isEditing && <button onClick={() => {handleDescriptionChange(); setIsEditing(!isEditing)}}>Save</button>}
                 <button>Advance</button>
+                </div>
             </div>
         </>
     );

@@ -69,13 +69,23 @@ button:focus-visible {
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
     border: grey 1px solid;
     border-radius: 8px;
     background-color: dimgrey;
     margin: 20px;
+    min-width: 100%;
 }
 
 .allCards {
+    font-size: 20px;
     display: flex;
     flex-direction: row;
+}
+.cardButtons {
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
