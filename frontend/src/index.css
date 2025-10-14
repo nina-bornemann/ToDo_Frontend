@@ -99,6 +99,11 @@ button:focus-visible {
 }
 .board {
     margin: 20px;
+    top: 120px;
+    position: fixed;
+    left: 150px;
+    right: 150px;
+
 }
 .columns {
     margin-left: 30px;
@@ -133,7 +138,7 @@ button:focus-visible {
 }
 
 .header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
