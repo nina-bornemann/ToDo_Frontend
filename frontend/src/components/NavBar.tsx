@@ -4,9 +4,11 @@ export default function NavBar() {
 
     return (
         <>
-            <div className={"nav"}>
-                <Link to={"/"}>Home</Link>
-                <Link to={"/board"}>ToDo Board</Link>
+            <div className={"header"}>
+                <div className={"nav"}>
+                    <Link className={"navText"} to={"/"}>Home</Link>
+                    <Link className={"navText"} to={"/board"}>ToDo Board</Link>
+                </div>
             </div>
         </>
     )

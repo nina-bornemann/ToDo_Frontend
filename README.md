@@ -1,6 +1,6 @@
 # 🧩 ToDo App — Frontend Implementation
 
-![img.png](./frontend/img.png)
+![img.png](img.png)
 
 This project is a simple but complete **ToDo management app** 
 built with **React + TypeScript** on the frontend and a **Spring 
@@ -24,9 +24,10 @@ This is a work in progress (see Future Implementations ⬇️)
     - 🟢 **To Do**
     - 🟡 **In Progress**
     - 🔵 **Done**
-- Create new ToDos
-- Edit descriptions inline
-- Change ToDo status via dropdown (and auto-move between columns)
+- **Create** new ToDos in the input field
+- **Edit** descriptions inline
+- **Change** ToDo status via dropdown
+- **Delete** ToDos directly from the list
 - Real-time updates without page reloads
 - Error handling for failed requests
 
@@ -48,11 +49,12 @@ This is a work in progress (see Future Implementations ⬇️)
 
 ## 📸 API Endpoints
 
-| Method | Endpoint | Description |
-|---------|-----------|-------------|
-| `GET` | `/api/todo` | Fetch all ToDos |
-| `POST` | `/api/todo` | Create a new ToDo |
-| `PUT` | `/api/todo/{id}` | Update existing ToDo (description/status) |
+| Method   | Endpoint | Description                               |
+|----------|-----------|-------------------------------------------|
+| `GET`    | `/api/todo` | Fetch all ToDos                           |
+| `POST`   | `/api/todo` | Create a new ToDo                         |
+| `PUT`    | `/api/todo/{id}` | Update existing ToDo (description/status) |
+| `DELETE` | `/api/todo/{id}` | Delete a ToDo from List                   |
 
 **Example ToDo object:**
 ```json
@@ -84,7 +86,6 @@ Visit 👉 http://localhost:5173
 
 ## 🧹 Future Improvements
 
-- Add delete functionality 🗑️
 - Improve UI/UX (animations, transitions, responsive design)
 - Add toast notifications for success/error
 - Unit tests for components

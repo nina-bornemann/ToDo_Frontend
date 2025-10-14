@@ -3,7 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
@@ -19,7 +19,7 @@ p {
   text-decoration: inherit;
 }
 p:hover {
-  color: #535bf2;
+  color: darkseagreen;
 }
 
 body {
@@ -48,7 +48,7 @@ button {
     margin: 2px;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: darkseagreen;
 }
 button:focus,
 button:focus-visible {
@@ -61,7 +61,7 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: darkseagreen;
   }
   button {
     background-color: rebeccapurple;
@@ -99,6 +99,11 @@ button:focus-visible {
 }
 .board {
     margin: 20px;
+    top: 120px;
+    position: fixed;
+    left: 150px;
+    right: 150px;
+
 }
 .columns {
     margin-left: 30px;
@@ -109,4 +114,39 @@ button:focus-visible {
     flex-direction: row;
     justify-content: center;
     gap: 20px;
+}
+
+.navText {
+    color: darkseagreen;
+    background: darkslategray;
+    border-radius: 999px;
+    box-shadow: darkseagreen 0 10px 15px -10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    padding: 8px 18px;
+    width: fit-content;
+    border: 0;
+}
+.navText:hover {
+    background: #2f4f3f;
+    box-shadow: #8fbc7f 0 10px 20px -10px;
+    transform: scale(1.02);
+    color: #8fbc7f;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 5px 15px darkseagreen;
+    background-color: #2f4f4f;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 40px;
 }
