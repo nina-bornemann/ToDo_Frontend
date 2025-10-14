@@ -39,7 +39,10 @@ export default function ToDoCard(props: Readonly<ToDoCardProps>) {
     }
 
     function handleDelete() {
-
+        axios
+            .delete(`/api/todo/${props.todo.id}`)
+            .then(() => props.onUpdate())
+            .catch((e) => console.log(e))
     }
 
     return (
