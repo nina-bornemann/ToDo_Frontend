@@ -38,6 +38,10 @@ export default function ToDoCard(props: Readonly<ToDoCardProps>) {
             .catch((e) => console.log(e))
     }
 
+    function handleDelete() {
+
+    }
+
     return (
         <>
             <div className={"card"}>
@@ -67,6 +71,8 @@ export default function ToDoCard(props: Readonly<ToDoCardProps>) {
 
                     {!isStatusEditing && <button onClick={() => setIsStatusEditing(!isStatusEditing)}>⏮️ Move ⏭️</button>}
                     {isStatusEditing && <button onClick={() => {handleStatusChange(); setIsStatusEditing(!isStatusEditing)}}>Save</button>}
+
+                    <button onClick={handleDelete}> 🗑️ </button>
                 </div>
             </div>
         </>
